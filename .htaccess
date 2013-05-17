@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+        Options +FollowSymLinks -Indexes
+        RewriteEngine on
+ 
+        RewriteBase /imageresizer
+ 
+        RedirectMatch 301 /imageresizer/index.php/(.*)$ /$1
+ 
+        RewriteCond %{HTTPS} !=on
+        RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+        RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+ 
+ 
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>
+ 
+<IfModule !mod_rewrite.c>
+        ErrorDocument 404 index.php
+</IfModule> 
