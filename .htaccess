@@ -2,9 +2,9 @@
         Options +FollowSymLinks -Indexes
         RewriteEngine on
  
-        RewriteBase /imageresizer
+        RewriteBase /
  
-        RedirectMatch 301 /imageresizer/index.php/(.*)$ /$1
+        RedirectMatch 301 /index.php/(.*)$ /$1
  
         RewriteCond %{HTTPS} !=on
         RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
